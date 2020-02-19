@@ -2,7 +2,7 @@ import argparse
 import os
 from scripts.log_handler import Logger
 from scripts.get_input_data import get_input_files
-
+from scripts.kallisto_helper import retrieve_genbank
 
 # This will be the script that is called first and will call all the other python scripts / handle outputs.
 # TODO Handle input of data, create output directory and log files, call the scripts in order of tasks needed to
@@ -30,5 +30,6 @@ def create_test_folder(args):
 args = parser.parse_args()
 folder_path = create_test_folder(args)
 logger = Logger(folder_path, args.quiet)
-get_input_files(logger, folder_path)
+# get_input_files(logger, folder_path)
+retrieve_genbank(logger, folder_path)
 

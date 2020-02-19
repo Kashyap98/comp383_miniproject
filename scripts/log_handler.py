@@ -7,7 +7,7 @@ class Logger():
     def __init__(self, folder_path, quiet_arg):
         self.folder_path = folder_path
         self.log_file_name = os.path.basename(folder_path[12:])
-        self.file_path = os.path.join(self.folder_path, f"{self.log_file_name}.txt")
+        self.file_path = os.path.join(self.folder_path, f"{self.log_file_name}_log.txt")
         self.quiet_mode = self.get_quiet_mode(quiet_arg[0])
 
         self.create_log_file()
