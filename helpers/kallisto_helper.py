@@ -54,7 +54,7 @@ def build_index(logger, folder_path, cdna_path):
     index_path = os.path.join(folder_path, 'index.idx')
     logger.log("Building index using Kallisto")
     kallisto_command = f"{get_kallisto_path()} index -i {index_path} {cdna_path} --make-unique"
-    logger.log(f"Running Kallisto command: {kallisto_command}")
+    logger.log(f"Running Kallisto command = {kallisto_command}")
     os.system(kallisto_command)
     logger.log("Finished building index")
     quantify_data(logger, folder_path, index_path)
@@ -68,9 +68,8 @@ def quantify_data(logger, folder_path, index_path):
         for name in data_names:
             name_path = os.path.join(folder_path, name)
             results_path = os.path.join(folder_path, f"results_{name}")
-            quantify_kallisto_command = f"{get_kallisto_path()} quant -i {index_path} -o {results_path} -b 30 -t 4 " \
-                                        f"{name_path}.1_1.fastq {name_path}.1_2.fastq"
-            logger.log(f"Running Kallisto command: {quantify_kallisto_command}")
+            quantify_kallisto_command = f"{get_kallisto_path()} quant -i {index_path} -o {results_path} -b 30 -t 4 {name_path}.1_1.fastq {name_path}.1_2.fastq"
+            logger.log(f"Running Kallisto command = {quantify_kallisto_command}")
             os.system(quantify_kallisto_command)
             quant_table.write(f"{name} {get_condition(name)} {results_path}\n")
     run_sleuth(logger, folder_path, table_path)
@@ -78,11 +77,11 @@ def quantify_data(logger, folder_path, index_path):
 
 def run_sleuth(logger, folder_path, table_path):
     logger.log("Running Sleuth")
-    for folder in glob.glob(os.path.join(folder_path, 'results_*')):
-        output_path = os.path.join(folder_path, f"{os.path.basename(folder)[8:]}_sleuth.txt")
-        sleuth_command = f"{get_r_path()} mini_sleuth.R {table_path} {output_path}"
-        logger.log(f"Running R (Sleuth) script: {sleuth_command}")
-        os.system(sleuth_command)
+    # for folder in glob.glob(os.path.join(folder_path, 'results_*')):
+    output_path = os.path.join(folder_path, f"sleuth_output.txt")
+    sleuth_command = f"{get_r_path()} mini_sleuth.R {table_path} {output_path}"
+    logger.log(f"Running R (Sleuth) script = {sleuth_command}")
+    os.system(sleuth_command)
 
 
 

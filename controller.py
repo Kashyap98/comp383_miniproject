@@ -4,6 +4,7 @@ import os
 from helpers.log_handler import Logger
 from helpers.get_input_data import get_input_files
 from helpers.kallisto_helper import retrieve_genbank
+from helpers.bowtie_mapping import generate_bowtie_index
 
 # This will be the script that is called first and will call all the other python helpers / handle outputs.
 # TODO Handle input of data, create output directory and log files, call the helpers in order of tasks needed to
@@ -41,12 +42,12 @@ def arg_get_files(input_arg):
 
 
 args = parser.parse_args()
-folder_path = create_test_folder(args)
-# folder_path = os.path.join(os.getcwd(), "miniProject_kash5")
+# folder_path = create_test_folder(args)
+folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
 if not folder_path:
     exit()
-get_files = arg_get_files(args.get_files[0])
 logger = Logger(folder_path, args.quiet[0])
-get_input_files(logger, folder_path, get_files)
-retrieve_genbank(logger, folder_path)
-
+# get_files = arg_get_files(args.get_files[0])
+# get_input_files(logger, folder_path, get_files)
+# retrieve_genbank(logger, folder_path)
+generate_bowtie_index(logger, folder_path)

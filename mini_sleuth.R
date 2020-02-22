@@ -6,7 +6,7 @@ output = args[2]
 #read in table describing samples and kallisto output
 stab<-read.table(input,header=TRUE,stringsAsFactors=FALSE)
 #initialize sleuth object
-so<-sleuth_prep(stab)
+so<-sleuth_prep(stab, extra_bootstrap_summary = TRUE)
 #fit a model comparing the two conditions
 so<-sleuth_fit(so, ~condition, 'full')
 #fit the reduced model to compare in the likelihood ratio test
