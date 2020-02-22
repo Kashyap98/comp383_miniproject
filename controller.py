@@ -41,12 +41,12 @@ def arg_get_files(input_arg):
 
 
 args = parser.parse_args()
-# folder_path = create_test_folder(args)
-folder_path = os.path.join(os.getcwd(), "miniProject_kash5")
+folder_path = create_test_folder(args)
+# folder_path = os.path.join(os.getcwd(), "miniProject_kash5")
 if not folder_path:
     exit()
 get_files = arg_get_files(args.get_files[0])
 logger = Logger(folder_path, args.quiet[0])
-# get_input_files(logger, folder_path, get_files)
+get_input_files(logger, folder_path, get_files)
 retrieve_genbank(logger, folder_path)
 
