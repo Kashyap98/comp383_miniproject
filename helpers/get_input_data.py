@@ -1,5 +1,4 @@
 import urllib.request as request
-from helpers.log_handler import Logger
 import shutil
 import os
 import platform
@@ -29,8 +28,7 @@ def download_file(name, file_name, logger):
 
 def get_input_files(logger, folder_path, get_files):
     current_dir = os.getcwd()
-    for i in range(0, len(data_names)):
-        name = data_names[i]
+    for name in data_names:
         file_name = os.path.join(folder_path, name)
         if get_files:
             download_file(name, file_name, logger)

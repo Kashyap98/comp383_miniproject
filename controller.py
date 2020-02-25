@@ -43,14 +43,14 @@ def arg_get_files(input_arg):
 
 
 args = parser.parse_args()
-folder_path = create_test_folder(args)
-# folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
+# folder_path = create_test_folder(args)
+folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
 if not folder_path:
     exit()
 logger = Logger(folder_path, args.quiet[0])
-get_files = arg_get_files(args.get_files[0])
-get_input_files(logger, folder_path, get_files)
-retrieve_genbank(logger, folder_path)
+# get_files = arg_get_files(args.get_files[0])
+# get_input_files(logger, folder_path, get_files)
+# retrieve_genbank(logger, folder_path)
 generate_bowtie_index(logger, folder_path)
 assemble_transcriptomes_into_assembly(logger, folder_path)
 count_filtered_contig_bp_and_append(logger, folder_path)
