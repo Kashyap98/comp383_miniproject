@@ -43,15 +43,15 @@ def generate_bowtie_index(logger, folder_path):
     logger.log("Downloading EF999921.fasta")
     fasta_path = os.path.join(folder_path, "EF999921.fasta")
     index_path = os.path.join(folder_path, 'EF999921')
-    # Entrez.email = "k.patel1098@gmail.com"
-    # handle = Entrez.efetch(db="nucleotide", id=" EF999921.1", rettype="fasta")
-    # record = SeqIO.read(handle, "fasta")
-    # SeqIO.write(record, fasta_path, "fasta")
-    # logger.log("Building index using bowtie2")
-    # bowtie_build_command = f"{get_bowtie_build_path()} {fasta_path} {index_path}"
-    # logger.log(f"bowtie index build command = {bowtie_build_command}")
-    # os.system(bowtie_build_command)
-    # logger.log("Finished building EF999921 index using bowtie2")
+    Entrez.email = "k.patel1098@gmail.com"
+    handle = Entrez.efetch(db="nucleotide", id=" EF999921.1", rettype="fasta")
+    record = SeqIO.read(handle, "fasta")
+    SeqIO.write(record, fasta_path, "fasta")
+    logger.log("Building index using bowtie2")
+    bowtie_build_command = f"{get_bowtie_build_path()} {fasta_path} {index_path}"
+    logger.log(f"bowtie index build command = {bowtie_build_command}")
+    os.system(bowtie_build_command)
+    logger.log("Finished building EF999921 index using bowtie2")
     bowtie_map_to_index(logger, folder_path, index_path)
 
 
