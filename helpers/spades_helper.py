@@ -13,11 +13,17 @@ def convert_sam_files_to_fastq(logger, folder_path):
         os.system(samtools_command)
 
 
+def generate_spades_fastq_path(folder_name, name):
+    return os.path.join(folder_name, f"{name}_paired.fastq")
+
+
 def assemble_transcriptomes_into_assembly(logger, folder_path):
     convert_sam_files_to_fastq(logger, folder_path)
     spades_output = os.path.join(folder_path, "spades_assembly")
-    spades_command = f"spades -k 55,77,99,127 -t 2 --only-assembler --pe1-12 {data_names[0]}_paired.fastq" \
-                     f" --pe2-12 {data_names[1]}_paired.fastq --pe3-12 {data_names[2]}_paired.fastq" \
-                     f" --pe4-12 {data_names[3]}_paired.fastq -o {spades_output}"
+    spades_command = f"spades -k 55,77,99,127 -t 2 --only-assembler" \
+                     f" --pe1-12 {generate_spades_fastq_path(folder_path, data_names[0])}" \
+                     f" --pe2-12 {generate_spades_fastq_path(folder_path, data_names[1])}" \
+                     f" --pe3-12 {generate_spades_fastq_path(folder_path, data_names[2])}" \
+                     f" --pe4-12 {generate_spades_fastq_path(folder_path, data_names[3])} -o {spades_output}"
     logger.log(f"Running spades command = {spades_command}")
     os.system(spades_command)
