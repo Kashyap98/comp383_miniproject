@@ -15,7 +15,7 @@ def count_filtered_contig_bp_and_append(logger, folder_path):
     filtered_total_length = 0
     logger.log("Filtering assembled contigs (bp > 1000)")
     with open(os.path.join(folder_path, "filtered_assembly_contigs.fasta"), "w") as filtered_contigs:
-        filtered_contigs.write("> filtered assembled contigs\n")
+        filtered_contigs.write(">filtered_assembled_contigs\n")
         all_contigs = SeqIO.parse(contigs_path, "fasta")
         for contig in all_contigs:
             contig_length = len(contig.seq)

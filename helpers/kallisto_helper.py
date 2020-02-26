@@ -44,7 +44,7 @@ def retrieve_genbank(logger, folder_path):
         for feature in record.features:
             if feature.type == "CDS":
                 cdna_count += 1
-                cdna_file.write(f"> {feature.qualifiers['protein_id'][0]}\n")
+                cdna_file.write(f">{feature.qualifiers['protein_id'][0]}\n")
                 cdna_file.write(f"{feature.location.extract(record).seq}\n")
     logger.log(f"Finished Extracting CDS features. The HCMV genome (EF99921) has {cdna_count} CDS.")
     build_index(logger, folder_path, cdna_path)
@@ -77,11 +77,20 @@ def quantify_data(logger, folder_path, index_path):
 
 def run_sleuth(logger, folder_path, table_path):
     logger.log("Running Sleuth")
-    # for folder in glob.glob(os.path.join(folder_path, 'results_*')):
     output_path = os.path.join(folder_path, f"sleuth_output.txt")
     sleuth_command = f"{get_r_path()} mini_sleuth.R {table_path} {output_path}"
     logger.log(f"Running R (Sleuth) script = {sleuth_command}")
     os.system(sleuth_command)
+
+    with open(output_path, "r") as sleuth_output:
+        lines = sleuth_output.readlines()
+        header = lines[0].split(" ")
+        logger.log(f"{header[0]} {header[3]} {header[1]} {header[2]}\n")
+        for line in lines[1:11]:
+            logger.log(f"{line[0]} {line[3]} {line[1]} {line[2]}\n")
+
+
+
 
 
 
