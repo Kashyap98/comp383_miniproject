@@ -84,9 +84,9 @@ def run_sleuth(logger, folder_path, table_path):
 
     with open(output_path, "r") as sleuth_output:
         lines = sleuth_output.readlines()
-        header = lines[0].split(" ")
+        header = lines.pop().split(" ")
         logger.log(f"{header[0]} {header[3]} {header[1]} {header[2]}\n")
-        for line in lines[1:11]:
+        for line in lines:
             line_info = line.split(" ")
             logger.log(f"{line_info[0]} {line_info[3]} {line_info[1]} {line_info[2]}\n")
 
