@@ -87,7 +87,8 @@ def run_sleuth(logger, folder_path, table_path):
         header = lines[0].split(" ")
         logger.log(f"{header[0]} {header[3]} {header[1]} {header[2]}\n")
         for line in lines[1:11]:
-            logger.log(f"{line[0]} {line[3]} {line[1]} {line[2]}\n")
+            line_info = line.split(" ")
+            logger.log(f"{line_info[0]} {line_info[3]} {line_info[1]} {line_info[2]}\n")
 
 
 

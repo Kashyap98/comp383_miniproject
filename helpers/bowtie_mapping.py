@@ -57,12 +57,13 @@ def bowtie_map_to_index(logger, folder_path, index_path):
     for name in data_names:
         one_pair_path = os.path.join(folder_path, f"{name}.1_1.fastq")
         two_pair_path = os.path.join(folder_path, f"{name}.1_2.fastq")
+        paired_output = os.path.join(folder_path, f"{name}_paired.fastq")
         # init_count = len(list(SeqIO.parse(one_pair_path, "fastq"))) + len(list(SeqIO.parse(two_pair_path, "fastq")))
         init_count = get_number_of_fastq_genes(one_pair_path) + get_number_of_fastq_genes(two_pair_path)
         name_output_path = os.path.join(folder_path, f"{name}_map.sam")
         if not platform.system() == "Windows":
             bowtie_command = f"{get_bowtie_path()} --no-unal --quiet -x {index_path} -1 {one_pair_path}" \
-                             f" -2 {two_pair_path} -S {name_output_path}"
+                             f" -2 {two_pair_path} -S {name_output_path} --al-conc {paired_output}"
             logger.log(f"bowtie map command = {bowtie_command}")
             os.system(bowtie_command)
         new_count = get_number_of_sam_genes(name_output_path)
