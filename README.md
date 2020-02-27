@@ -4,7 +4,7 @@
 ## Requirements
 These requirements are needed to run the project. You will need to run a Unix based environment such as Linux/MacOS.
 
-Python 3.6.x (For example 3.6.x) 
+**Python 3.6.x (For example 3.6.x)** 
 https://www.python.org/downloads/release/python-363/
 
 **BioPython**
