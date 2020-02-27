@@ -1,0 +1,91 @@
+Creating Log File
+Downloading SRR5660030
+Downloaded SRR5660030
+Running fastq-dump on SRR5660030
+Downloading SRR5660033
+Downloaded SRR5660033
+Running fastq-dump on SRR5660033
+Downloading SRR5660044
+Downloaded SRR5660044
+Running fastq-dump on SRR5660044
+Downloading SRR5660045
+Downloaded SRR5660045
+Running fastq-dump on SRR5660045
+Downloading cDNA
+Downloaded cDNA. Extracting CDS features
+Finished Extracting CDS features. The HCMV genome (EF99921) has 168 CDS.
+Building index using Kallisto
+Running Kallisto command = kallisto index -i /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/index.idx /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/cdna.fasta --make-unique
+Finished building index
+Quantifying data
+Running Kallisto command = kallisto quant -i /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/index.idx -o /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/results_SRR5660030 -b 30 -t 4 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_1.fastq /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_2.fastq
+Running Kallisto command = kallisto quant -i /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/index.idx -o /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/results_SRR5660033 -b 30 -t 4 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_1.fastq /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_2.fastq
+Running Kallisto command = kallisto quant -i /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/index.idx -o /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/results_SRR5660044 -b 30 -t 4 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_1.fastq /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_2.fastq
+Running Kallisto command = kallisto quant -i /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/index.idx -o /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/results_SRR5660045 -b 30 -t 4 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_1.fastq /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_2.fastq
+Running Sleuth
+Running R (Sleuth) script = Rscript mini_sleuth.R /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/quant_table.txt /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/sleuth_output.txt
+ABV71507.1 7.96945436003376 0.00475732768397104 0.0496546077014477
+
+target_id test_stat pval qval
+
+ABV71604.1 14.8058663288888 0.000119164234539767 0.0117093829168113
+
+ABV71622.1 14.4990246483655 0.000140232130740256 0.0117093829168113
+
+ABV71560.1 13.0094839327533 0.000309917340698531 0.0154311874422261
+
+ABV71652.1 12.6798901698129 0.000369609280053321 0.0154311874422261
+
+ABV71626.1 11.8133199295032 0.000588084748467873 0.0172288449428092
+
+ABV71651.1 11.469261959256 0.000707567748131834 0.0172288449428092
+
+ABV71646.1 11.4313109283572 0.000722167153291402 0.0172288449428092
+
+ABV71649.1 11.1497503660432 0.000840429819276908 0.0175439724774055
+
+ABV71561.1 10.4406482452047 0.00123271998392656 0.0228738041461928
+
+ABV71595.1 10.0085965855827 0.00155811209263195 0.0260204719469535
+
+ABV71519.1 8.64355078309844 0.00328221113267218 0.0440877450176177
+
+ABV71596.1 8.5711511482984 0.00341531153068117 0.0440877450176177
+
+ABV71506.1 8.40172409427908 0.00374865309033353 0.0440877450176177
+
+ABV71607.1 8.35147586450072 0.00385374178745047 0.0440877450176177
+
+ABV71635.1 8.30207670055876 0.00395997709739081 0.0440877450176177
+
+Downloading EF999921.fasta
+Building index using bowtie2
+bowtie index build command = bowtie2-build /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/cdna.fasta /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/EF999921
+Finished building EF999921 index using bowtie2
+Starting to map reads to bowtie index
+bowtie map command = bowtie2 --no-unal --quiet -x /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/EF999921 -1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_1.fastq -2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_2.fastq -S /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_map.sam --al-conc /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_paired.fastq
+Donor 1 (2dpi) had 4528413 read pairs before Bowtie2 filtering and 3336768 read pairs after.
+bowtie map command = bowtie2 --no-unal --quiet -x /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/EF999921 -1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_1.fastq -2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_2.fastq -S /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_map.sam --al-conc /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_paired.fastq
+Donor 1 (6dpi) had 4024744 read pairs before Bowtie2 filtering and 2599910 read pairs after.
+bowtie map command = bowtie2 --no-unal --quiet -x /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/EF999921 -1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_1.fastq -2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_2.fastq -S /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_map.sam --al-conc /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_paired.fastq
+Donor 3 (2dpi) had 5471945 read pairs before Bowtie2 filtering and 3983577 read pairs after.
+bowtie map command = bowtie2 --no-unal --quiet -x /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/EF999921 -1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_1.fastq -2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_2.fastq -S /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_map.sam --al-conc /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_paired.fastq
+Donor 3 (6dpi) had 4963948 read pairs before Bowtie2 filtering and 2687534 read pairs after.
+Running spades command = spades -k 55,77,99,127 -t 4 --only-assembler --pe1-1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_paired.1.fastq --pe1-2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660030_paired.2.fastq --pe2-1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_paired.1.fastq --pe2-2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660033_paired.2.fastq --pe3-1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_paired.1.fastq --pe3-2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660044_paired.2.fastq --pe4-1 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_paired.1.fastq --pe4-2 /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/SRR5660045_paired.2.fastq -o /home/kpatel36/comp383_miniproject/miniProject_kashyap_patel/spades_assembly
+Filtering assembled contigs (bp > 1000)
+There are 65 > 1000 bp in the assembly.
+There are 133317 in the assembly.
+
+Blasting generated fasta file using blastn
+seq_title align_len number_HSPS topHSP_ident topHSP_gaps topHSP_bits topHSP_expect
+
+gi|1273125815|gb|MF871618.1| Synthetic human betaherpesvirus 5 clone TB40-BAC-KL7-SE, complete sequence 242896 75 6753 0 12471.5 0.0
+gi|523510377|gb|KF297339.1| Human herpesvirus 5 strain TB40/E clone Lisa, complete genome 237683 73 6753 0 12471.5 0.0
+gi|157779983|gb|EF999921.1| Human herpesvirus 5 strain TB40/E clone TB40-BAC4, complete sequence 229050 73 6753 0 12471.5 0.0
+gi|1098408701|gb|KX544839.1| Human herpesvirus 5 isolate TB40-E_UNC, complete genome 228992 73 6751 2 12458.6 0.0
+gi|1131740114|gb|KT726951.2| Human betaherpesvirus 5 strain UK/Lon8/Urine/2012, complete genome 235801 75 6749 0 12449.4 0.0
+gi|822894182|gb|KP745676.1| Human herpesvirus 5 strain BE/28/2010, complete genome 235974 73 6743 0 12416.1 0.0
+gi|1145593888|gb|KY490080.1| Human betaherpesvirus 5 strain HANSCTR1B, complete genome 235688 73 6742 0 12410.6 0.0
+gi|586832780|gb|KJ361947.1| Human herpesvirus 5 strain 2CEN5, complete genome 235567 73 6742 0 12410.6 0.0
+gi|822899298|gb|KP745692.1| Human herpesvirus 5 strain BE/3/2012, complete genome 236051 74 6742 0 12410.6 0.0
+gi|822893356|gb|KP745673.1| Human herpesvirus 5 strain BE/42/2011, complete genome 235462 72 6742 0 12410.6 0.0

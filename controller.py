@@ -14,7 +14,7 @@ from helpers.spades_helper import assemble_transcriptomes_into_assembly
 # define arguments for the script.
 parser = argparse.ArgumentParser(description='Arguments')
 parser.add_argument('--name', metavar='name', type=str, nargs='+',
-                    help='a name for your test run')
+                    help='(required) a name for your test run')
 parser.add_argument('--quiet', metavar='quiet', type=str, nargs='+',
                     help='y to only log to log file, n (default) to log to log file and print to console.', default="n")
 parser.add_argument('--test_data', metavar='test_data', type=str, nargs='+',
@@ -51,6 +51,7 @@ folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
 # exit if folder is not made.
 if not folder_path:
     exit()
+
 # run the scripts according to the instructions.
 logger = Logger(folder_path, args.quiet[0])
 test_data = arg_get_files(args.test_data[0])
@@ -60,3 +61,4 @@ generate_bowtie_index(logger, folder_path)
 assemble_transcriptomes_into_assembly(logger, folder_path)
 count_filtered_contig_bp_and_append(logger, folder_path)
 blast_filtered_contigs(logger, folder_path)
+logger.log("Completed running all scripts")
