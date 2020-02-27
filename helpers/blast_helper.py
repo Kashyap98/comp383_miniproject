@@ -23,7 +23,6 @@ def blast_filtered_contigs(logger, folder_path):
         if alignment_count == 10:
             break
 
-
 # logger = log_handler.Logger("C:\\Users\\Kashyap\\PycharmProjects\\comp383_miniproject\\miniProject_kashyap", quiet_arg=False)
 # blast_filtered_contigs(logger, "C:\\Users\\Kashyap\\PycharmProjects\\comp383_miniproject\\miniProject_kashyap")
 

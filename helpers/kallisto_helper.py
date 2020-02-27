@@ -68,7 +68,7 @@ def quantify_data(logger, folder_path, index_path):
         for name in data_names:
             name_path = os.path.join(folder_path, name)
             results_path = os.path.join(folder_path, f"results_{name}")
-            quantify_kallisto_command = f"{get_kallisto_path()} quant -i {index_path} -o {results_path} -b 30 -t 4 {name_path}.1_1.fastq {name_path}.1_2.fastq"
+            quantify_kallisto_command = f"{get_kallisto_path()} quant -i {index_path} -o {results_path} -b 30 -t 4 {name_path}_1.fastq {name_path}_2.fastq"
             logger.log(f"Running Kallisto command = {quantify_kallisto_command}")
             os.system(quantify_kallisto_command)
             quant_table.write(f"{name} {get_condition(name)} {results_path}\n")

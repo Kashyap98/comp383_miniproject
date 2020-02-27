@@ -26,20 +26,20 @@ def download_file(name, file_name, logger):
             logger.log(f"Downloaded {name}")
 
 
-def get_input_files(logger, folder_path, get_files):
+def get_input_files(logger, folder_path, test_data):
     current_dir = os.getcwd()
     for name in data_names:
         file_name = os.path.join(folder_path, name)
-        if get_files:
+        if not test_data:
             download_file(name, file_name, logger)
             logger.log(f"Running fastq-dump on {name}")
             os.chdir(folder_path)
-            os.system(f"{get_fastq_path()} -I --split-files {name}.1")
+            os.system(f"{get_fastq_path()} -I --split-files {name}")
         else:
-            shutil.copyfile(os.path.join(current_dir, "sample_data", f"{name}.1"),
-                            os.path.join(folder_path, f"{name}.1_1.fastq"))
-            shutil.copyfile(os.path.join(current_dir, "sample_data", f"{name}.1"),
-                            os.path.join(folder_path, f"{name}.1_2.fastq"))
+            shutil.copyfile(os.path.join(current_dir, "sample_data", f"{name}_1"),
+                            os.path.join(folder_path, f"{name}_1.fastq"))
+            shutil.copyfile(os.path.join(current_dir, "sample_data", f"{name}_1"),
+                            os.path.join(folder_path, f"{name}_2.fastq"))
 
     os.chdir(current_dir)
 

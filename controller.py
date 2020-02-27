@@ -18,7 +18,7 @@ parser.add_argument('--name', metavar='name', type=str, nargs='+',
 parser.add_argument('--quiet', metavar='quiet', type=str, nargs='+',
                     help='y to only log to log file, n (default) to log to log file and print to console.', default="n")
 parser.add_argument('--test_data', metavar='test_data', type=str, nargs='+',
-                    help='y to download new files, n (default) to use sample data.', default="n")
+                    help='y (default) to use sample data, n to download new files.', default="y")
 
 
 def create_test_folder(args):
@@ -46,15 +46,15 @@ def arg_get_files(input_arg):
 
 
 args = parser.parse_args()
-folder_path = create_test_folder(args)
-# folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
+# folder_path = create_test_folder(args)
+folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
 # exit if folder is not made.
 if not folder_path:
     exit()
 # run the scripts according to the instructions.
 logger = Logger(folder_path, args.quiet[0])
-get_files = arg_get_files(args.test_data[0])
-get_input_files(logger, folder_path, get_files)
+test_data = arg_get_files(args.test_data[0])
+get_input_files(logger, folder_path, test_data)
 retrieve_genbank(logger, folder_path)
 generate_bowtie_index(logger, folder_path)
 assemble_transcriptomes_into_assembly(logger, folder_path)

@@ -55,8 +55,8 @@ def bowtie_map_to_index(logger, folder_path, index_path):
     logger.log("Starting to map reads to bowtie index")
     current_name = 0
     for name in data_names:
-        one_pair_path = os.path.join(folder_path, f"{name}.1_1.fastq")
-        two_pair_path = os.path.join(folder_path, f"{name}.1_2.fastq")
+        one_pair_path = os.path.join(folder_path, f"{name}_1.fastq")
+        two_pair_path = os.path.join(folder_path, f"{name}_2.fastq")
         paired_output = os.path.join(folder_path, f"{name}_paired.fastq")
         # init_count = len(list(SeqIO.parse(one_pair_path, "fastq"))) + len(list(SeqIO.parse(two_pair_path, "fastq")))
         init_count = get_number_of_fastq_genes(one_pair_path) + get_number_of_fastq_genes(two_pair_path)
