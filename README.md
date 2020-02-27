@@ -35,6 +35,11 @@ NOTE: If you have multiple versions of python installed on your system replace t
 Identify the args necessary for the smooth operation of this miniproject pipeline.
 
 `python controller.py -h`
+
+Run the sample data set with this command. Will not run in quiet mode.
+
+`python controller.py --name sample_test`
+
 #### Args:
 `--name [name]`: (Required) The name of your test folder and log file inside the folder. miniProject_[name]
 

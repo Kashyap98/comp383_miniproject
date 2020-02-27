@@ -9,7 +9,7 @@ from helpers import log_handler
 
 def blast_filtered_contigs(logger, folder_path):
     # read in contigs > 1000 bp and blast against ncbi
-    logger.log("Blasting generated fasta file using blastn")
+    logger.log("Blasting generated fasta file using blastn (warning: this step takes the longest for the sample data.)")
     fasta_seq = SeqIO.read(os.path.join(folder_path, "filtered_assembly_contigs.fasta"), format="fasta")
     result_handle = NCBIWWW.qblast("blastn", "nr", fasta_seq.seq, megablast=True, entrez_query="Herpesviridae[family]")
     blast_records = list(NCBIXML.parse(result_handle))
