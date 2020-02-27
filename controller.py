@@ -46,8 +46,7 @@ def arg_get_files(input_arg):
 
 
 args = parser.parse_args()
-# folder_path = create_test_folder(args)
-folder_path = os.path.join(os.getcwd(), "miniProject_kashyap")
+folder_path = create_test_folder(args)
 # exit if folder is not made.
 if not folder_path:
     exit()
