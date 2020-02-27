@@ -18,9 +18,9 @@ def generate_spades_fastq_path(folder_name, name, number):
 
 
 def assemble_transcriptomes_into_assembly(logger, folder_path):
-    convert_sam_files_to_fastq(logger, folder_path)
+    # convert_sam_files_to_fastq(logger, folder_path)
     spades_output = os.path.join(folder_path, "spades_assembly")
-    spades_command = f"spades -k 55,77,99,127 -t 2 --only-assembler" \
+    spades_command = f"spades -k 55,77,99,127 -t 4 --only-assembler" \
                      f" --pe1-1 {generate_spades_fastq_path(folder_path, data_names[0], 1)}" \
                      f" --pe1-2 {generate_spades_fastq_path(folder_path, data_names[0], 2)}" \
                      f" --pe2-1 {generate_spades_fastq_path(folder_path, data_names[1], 1)}" \
