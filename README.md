@@ -22,11 +22,18 @@ http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#obtaining-bowtie-2
 **Spades**
 http://cab.spbu.ru/files/release3.14.0/manual.html
 
+**Fastq-dump**
+https://ncbi.github.io/sra-tools/fastq-dump.html
+
 ## Usage
 ### Get the repo
 Run the following command in the directory you would like the project to reside in.
 
 `git clone https://github.com/Kashyap98/comp383_miniproject.git`
+
+Enter the project directory 
+`cd comp383_miniproject/`
+
 ### Run controller.py
 controller.py is the center of the entire operation. 
 
